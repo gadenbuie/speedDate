@@ -14,3 +14,5 @@ Imports:
     shiny,
     miniUI,
     rstudioapi
+URL: https://github.com/gadenbuie/speedDate
+BugReports: https://github.com/gadenbuie/speedDate/issues
