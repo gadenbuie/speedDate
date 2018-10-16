@@ -32,10 +32,11 @@ guess_format <- function(
   fmts <- fmts[order(nchar(fmts), decreasing = TRUE)]
 
   # OS1-6 need to come first to beat %T
-  fmts <- fmts[c(paste0("%OS", 6:1), setdiff(names(fmts), paste0("%OS", 1:6)))]
+  fmts <- fmts[c(intersect(names(fmts), paste0("%OS", 1:6)),
+                 setdiff(names(fmts), paste0("%OS", 1:6)))]
   # some things should go to the end
   fmts <- fmts[c(setdiff(names(fmts), c("%u", "%W", "%V", "%G", "%g")),
-                 c("%u", "%W", "%V", "%G", "%g"))]
+                 intersect(names(fmts), c("%u", "%W", "%V", "%G", "%g")))]
 
   if (frontpad_single_digits) {
     text <- speedDate::frontpad_single_digits(text)
