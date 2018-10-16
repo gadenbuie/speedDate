@@ -1,0 +1,16 @@
+Package: speedDate
+Title: Quick Date Format Strings for strftime
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Garrick",
+           family = "Aden-Buie",
+           role = c("aut", "cre"),
+           email = "garrick@adenbuie.com")
+Description: An RStudio addin to quickly get date format strings for use with strftime.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    shiny,
+    miniUI,
+    rstudioapi

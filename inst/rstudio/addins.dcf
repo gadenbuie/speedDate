@@ -1,0 +1,4 @@
+Name: Speed Date Format
+Description: Get strftime date format tokens
+Binding: speed_date
+Interactive: true
