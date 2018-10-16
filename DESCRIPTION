@@ -6,13 +6,14 @@ Authors@R:
            family = "Aden-Buie",
            role = c("aut", "cre"),
            email = "garrick@adenbuie.com")
-Description: An RStudio addin to quickly get date format strings for use with strftime.
+Description: An RStudio addin to quickly get date format strings
+    for use with strftime.
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-Imports: 
-    shiny,
-    miniUI,
-    rstudioapi
 URL: https://github.com/gadenbuie/speedDate
 BugReports: https://github.com/gadenbuie/speedDate/issues
+Imports: 
+    miniUI,
+    rstudioapi,
+    shiny
+Encoding: UTF-8
+LazyData: true
