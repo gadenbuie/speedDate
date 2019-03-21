@@ -20,15 +20,11 @@ generate_formats_list <- function(
   }
   strfmts <- paste0("%", strfmts)
 
-  vapply(strfmts, strftime, character(1), x = x, tz = attributes(x)$tzone)
+  out <- vapply(strfmts, strftime, character(1), x = x, tz = attributes(x)$tzone)
+  out[names(out) != unname(out)]
 }
 
-guess_format <- function(
-  text,
-  dt = as.POSIXct(1136239445.987654, origin = "1970-01-01", tz = "MST"),
-  frontpad_single_digits = TRUE
-) {
-  fmts <- generate_formats_list(dt)
+order_formats_list <- function(fmts = generate_formats_list(...), ...) {
   fmts <- fmts[order(nchar(fmts), decreasing = TRUE)]
 
   # OS1-6 need to come first to beat %T
@@ -38,8 +34,18 @@ guess_format <- function(
   fmts <- fmts[c(setdiff(names(fmts), c("%u", "%W", "%V", "%G", "%g")),
                  intersect(names(fmts), c("%u", "%W", "%V", "%G", "%g")))]
 
+  fmts
+}
+
+guess_format <- function(
+  text,
+  dt = as.POSIXct(1136239445.987654, origin = "1970-01-01", tz = "MST"),
+  frontpad_single_digits = TRUE
+) {
+  fmts <- order_formats_list(x = dt)
+
   if (frontpad_single_digits) {
-    text <- speedDate::frontpad_single_digits(text)
+    text <- frontpad_single_digits(text)
   }
 
   out <- text
